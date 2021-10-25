@@ -1,19 +1,19 @@
 <template>
   <v-app>
     <v-main>
-      <Input />
+      <ListView />
     </v-main>
   </v-app>
 </template>
 
 <script>
-import Input from "./components/Input.vue"
+import ListView from './view/ListView.vue'
 
 export default {
   name: 'App',
 
   components: {
-    Input
+    ListView,
   },
 
   data: () => ({
