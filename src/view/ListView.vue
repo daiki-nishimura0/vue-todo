@@ -34,18 +34,21 @@
   class="mx-a"
     outlined
 >
-    <v-text-field
-        v-model="newTask"
+    <v-text-field 
+       v-model="newTask"
         label="Todoを入力してね"
         @keydown.enter="create"
-    >
+        filled 
+        outlined
+        single-line 
+        >
       <template v-slot:append>
         <v-fade-transition>
           <v-icon
             v-if="newTask"
             @click="create"
           >
-            追加
+       mdi-pencil
           </v-icon>
         </v-fade-transition>
       </template>
@@ -78,7 +81,7 @@
 
       <v-progress-circular
         :value="progress"
-        class="mr-2"
+        class="mr-4"
       ></v-progress-circular>
     </v-row>
 
@@ -156,7 +159,6 @@
       },
       // 完了割合いをサークルに表示
       progress () {
-
         return this.completedTasks / this.tasks.length * 100
       },
       // 未完了タスク数のカウント
@@ -167,12 +169,16 @@
     },
 
     methods: {
+        // 新しいTodoを作成して追加する
       create () {
+          // 追加ボタンが押された時以下のしょりを行う
         this.tasks.push({
+            // 未完了状態
           done: false,
+            // newTaskに追加する
           text: this.newTask,
         })
-
+        // 追加したらテキストフィールドの中を空にする
         this.newTask = null
       },
     },
